@@ -44,4 +44,29 @@ public class JobTest {
 
         testJob1.equals(testJob2);
     }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine(){
+        Job testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String jobString = testJob1.toString();
+        assertTrue("Starts with System.lineSeparator()", jobString.startsWith(System.lineSeparator()));
+        assertTrue("Ends with System.lineSeparator()", jobString.endsWith(System.lineSeparator()));
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+        Job testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String jobString = testJob1.toString();
+        assertTrue(jobString.contains(testJob1.toString()));
+
+    }
+    @Test
+    public void testToStringHandlesEmptyField(){
+        Job testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String jobString = testJob1.toString();
+        assertTrue(jobString.contains("Employer: "));
+    }
 }
