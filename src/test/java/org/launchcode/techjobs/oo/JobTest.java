@@ -44,4 +44,12 @@ public class JobTest {
 
         testJob1.equals(testJob2);
     }
+
+    @Test
+    public void testPrintJob(){
+        Job testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertTrue(testJob1.toString().startsWith(System.lineSeparator()));
+        assertTrue(testJob1.toString().endsWith(System.lineSeparator()));
+    }
 }
